@@ -4,12 +4,15 @@
 
 Static site (no build step, no dependencies, no secrets), already pushed to `github.com/contatc2/calendar-app-demo` on `main`. Deploy method: connect the GitHub repo in the Netlify dashboard so it auto-deploys on every push to `main`.
 
-- [ ] **1. Add `netlify.toml`** at the project root declaring an explicit static-site config: no build command, publish directory `.`. Makes the deploy config repeatable and self-documenting instead of relying on dashboard defaults.
-- [ ] **2. Commit and push `netlify.toml`** to `main` so it's available when the site is linked.
-- [ ] **3. You link the repo in the Netlify dashboard** (netlify.com → Add new site → Import an existing project → GitHub → `contatc2/calendar-app-demo`). This step needs your Netlify login, so it's on you — I'll give exact steps when we get there.
-- [ ] **4. Confirm the deploy succeeded** — check the Netlify-provided URL loads the calendar correctly (grid renders, today is highlighted).
-- [ ] **5. Security pass** — confirm `netlify.toml` contains no secrets/tokens/env vars, and that nothing sensitive is exposed by the deploy (this app has no backend or API keys, so this should be a quick confirmation).
-- [ ] **6. Review section** — summarize what changed.
+- [x] **1. Add `netlify.toml`** at the project root declaring an explicit static-site config: no build command, publish directory `.`. Makes the deploy config repeatable and self-documenting instead of relying on dashboard defaults.
+- [x] **2. Commit and push `netlify.toml`** to `main` so it's available when the site is linked.
+- [x] **3. You link the repo in the Netlify dashboard** (netlify.com → Add new site → Import an existing project → GitHub → `contatc2/calendar-app-demo`). This step needs your Netlify login, so it's on you — I'll give exact steps when we get there.
+  - Result: deployed to `https://contatc2-calendar-app.netlify.app`.
+- [x] **4. Confirm the deploy succeeded** — check the Netlify-provided URL loads the calendar correctly (grid renders, today is highlighted).
+  - Result: verified live via browser automation — August 2026 grid renders correctly, the 15th is highlighted as today, no console errors. Noted: the site is currently marked **private** in Netlify (visitor-access banner, "Only project members can view this site") — that's an account/team setting, not a code issue. Flagged to the user; public visibility toggle is in Site settings → Visitor access.
+- [x] **5. Security pass** — confirm `netlify.toml` contains no secrets/tokens/env vars, and that nothing sensitive is exposed by the deploy (this app has no backend or API keys, so this should be a quick confirmation).
+  - Result: `netlify.toml` contains only `[build] publish = "."` — no env vars, tokens, or secrets. No server/build step was introduced, so the app's existing security posture (no `innerHTML` with user data, no network calls, `localStorage`-only persistence) is unchanged by deployment.
+- [x] **6. Review section** — summarize what changed.
 
 
 
@@ -26,6 +29,14 @@ Static site (no build step, no dependencies, no secrets), already pushed to `git
 - [x] **5. Review section** — summarize what was added.
 
 Simple month-view calendar app (vanilla HTML/CSS/JS, no build step, no dependencies). Events persist to `localStorage` as JSON.
+
+## Review — Netlify deployment
+
+Added `netlify.toml` (`[build] publish = "."`, no build command) declaring this as a plain static site, since it has no build step or dependencies. Committed and pushed to `main`. You connected the GitHub repo in the Netlify dashboard, which deployed it to `https://contatc2-calendar-app.netlify.app`.
+
+Verified live via browser automation: the calendar grid renders correctly (August 2026, the 15th highlighted as today), and no console errors. One thing flagged, not fixed by this change: the site is currently marked **private** in Netlify's visitor-access settings, so it's only viewable while logged into the Netlify account — that's a dashboard toggle (Site settings → Visitor access), not something in the code.
+
+Security pass: `netlify.toml` has no secrets, tokens, or env vars. No backend or build step was added, so nothing new is exposed — the app's existing security properties (no `innerHTML` with user input, no network calls, `localStorage`-only persistence) carry over unchanged to the deployed site.
 
 ## Checklist
 
