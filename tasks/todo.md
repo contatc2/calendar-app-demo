@@ -1,5 +1,18 @@
 # Calendar App — To-Do
 
+## Deploy to Netlify (GitHub-connected)
+
+Static site (no build step, no dependencies, no secrets), already pushed to `github.com/contatc2/calendar-app-demo` on `main`. Deploy method: connect the GitHub repo in the Netlify dashboard so it auto-deploys on every push to `main`.
+
+- [ ] **1. Add `netlify.toml`** at the project root declaring an explicit static-site config: no build command, publish directory `.`. Makes the deploy config repeatable and self-documenting instead of relying on dashboard defaults.
+- [ ] **2. Commit and push `netlify.toml`** to `main` so it's available when the site is linked.
+- [ ] **3. You link the repo in the Netlify dashboard** (netlify.com → Add new site → Import an existing project → GitHub → `contatc2/calendar-app-demo`). This step needs your Netlify login, so it's on you — I'll give exact steps when we get there.
+- [ ] **4. Confirm the deploy succeeded** — check the Netlify-provided URL loads the calendar correctly (grid renders, today is highlighted).
+- [ ] **5. Security pass** — confirm `netlify.toml` contains no secrets/tokens/env vars, and that nothing sensitive is exposed by the deploy (this app has no backend or API keys, so this should be a quick confirmation).
+- [ ] **6. Review section** — summarize what changed.
+
+
+
 ## docs-helper sub-agent + README
 
 - [x] **1. Create `.claude/agents/docs-helper.md`** — a reusable sub-agent (frontmatter: name, description, tools) whose job is to scan the app's source files and produce/refresh a beginner-friendly `README.md`.
