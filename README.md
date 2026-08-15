@@ -1,5 +1,7 @@
 # Calendar App
 
+**Live demo:** https://contatc2-calendar-app.netlify.app
+
 A simple month-view calendar you can use to keep track of events. Add, edit, and delete events on any day, and your events are saved automatically so they're still there next time you open the app.
 
 This app is "static," which means it's just HTML, CSS, and JavaScript files. There's nothing to install and no server to set up.
