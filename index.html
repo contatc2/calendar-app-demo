@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calendar</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="toolbar">
+      <div class="nav-group">
+        <button id="prev-month" class="icon-btn" type="button" aria-label="Previous month">&lsaquo;</button>
+        <h1 id="month-label" aria-live="polite"></h1>
+        <button id="next-month" class="icon-btn" type="button" aria-label="Next month">&rsaquo;</button>
+      </div>
+      <div class="action-group">
+        <button id="today-btn" type="button" class="secondary-btn">Today</button>
+        <button id="add-event-btn" type="button" class="primary-btn">+ Add Event</button>
+      </div>
+    </header>
+
+    <div class="weekday-header" id="weekday-header"></div>
+    <div class="calendar-grid" id="calendar-grid"></div>
+  </div>
+
+  <div class="modal-overlay" id="modal-overlay" hidden>
+    <div class="modal" id="event-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <div class="modal-header">
+        <h2 id="modal-title">Add Event</h2>
+        <button id="close-modal-btn" type="button" class="icon-btn" aria-label="Close">&times;</button>
+      </div>
+      <form id="event-form" novalidate>
+        <div class="field">
+          <label for="event-title">Title</label>
+          <input type="text" id="event-title" name="title" maxlength="120" aria-required="true" aria-describedby="title-error" />
+          <span class="error-text" id="title-error" aria-live="polite"></span>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="event-date">Date</label>
+            <input type="date" id="event-date" name="date" aria-required="true" aria-describedby="date-error" />
+            <span class="error-text" id="date-error" aria-live="polite"></span>
+          </div>
+          <div class="field">
+            <label for="event-time">Time <span class="optional">(optional)</span></label>
+            <input type="time" id="event-time" name="time" aria-describedby="time-error" />
+            <span class="error-text" id="time-error" aria-live="polite"></span>
+          </div>
+        </div>
+        <div class="field">
+          <label for="event-description">Description <span class="optional">(optional)</span></label>
+          <textarea id="event-description" name="description" rows="3" maxlength="500"></textarea>
+        </div>
+        <div class="modal-actions">
+          <button type="button" id="delete-event-btn" class="danger-btn" hidden>Delete</button>
+          <div class="modal-actions-right">
+            <button type="button" id="cancel-btn" class="secondary-btn">Cancel</button>
+            <button type="submit" id="save-btn" class="primary-btn">Save</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="app.js" defer></script>
+</body>
+</html>
